@@ -1,63 +1,50 @@
 #include <iostream>
-
-// #include <cstdio>
+#include <cstdio>
+#include <string>
 
 using namespace std;
 
-int nCase;
+#define B_INF 9000000000
 
-int N, B, H, W;
-int price; // per person/week
-int a; // beds/week
+long long N, B, H, W;
+long long price; // per person/week
+long long beds; // beds/week
 
-int minPrice;
+long long minPrice;
 
 int main(int argc, char **argv)
 {
 	//freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
 
-	while (!cin.eof())
+	while (scanf("%d%d%d%d\n", &N, &B, &H, &W) != EOF)
 	{
-		minPrice = 0; // reset
-
-		cin >> N >> B >> H >> W;
+		minPrice = B_INF; // reset
+        
 		for (int h = 0; h < H; h++)
 		{
-			cin >> price;
+			cin >> price; // Price is same for all weekends
 			for (int w = 0; w < W; w++)
 			{
-				cin >> a;
-				if (a >= N) // at least hotel can accomodate all person
+				cin >> beds;
+				if (beds >= N) // at least hotel can accomodate all person
 				{
-					int currentPrice = N * price; // calculate cost
-					if (minPrice) // already have at least one minimum cost
+					long long currentPrice = N * price; // calculate cost
+					if (currentPrice < minPrice) // is minimum ?
 					{
-						if (currentPrice < minPrice) // is minimum ?
-						{
-							minPrice = currentPrice; // update minimum cost
-						}
+						minPrice = currentPrice; // update minimum cost
 					}
-					else // first time setting minimum
-					{
-						minPrice = currentPrice;
-					}
+
+					string strIgnore; getline(cin, strIgnore); break; // No need further processing for the same hotel as price is same for all weekends
 				}
 			}
 		}
-		
-		if (minPrice) // Hotel can accomodate all person
+
+		if (minPrice != B_INF && minPrice <= B) // is in budget ?
 		{
-			if (minPrice <= B) // is in budget ?
-			{
-				cout << minPrice << endl;
-			}
-			else // Not in budget
-			{
-				cout << "stay home" << endl;
-			}
+			cout << minPrice << endl;
 		}
-		else // Hotel cannot accomodate all person
+		else // Not in budget
 		{
 			cout << "stay home" << endl;
 		}

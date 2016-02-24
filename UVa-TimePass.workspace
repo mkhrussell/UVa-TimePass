@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="UVa-TimePass" Database="">
+  <Project Name="UVa-11559" Path="UVa-11559/UVa-11559.project" Active="Yes"/>
+  <Project Name="UVa-11799" Path="UVa-11799/UVa-11799.project"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="UVa-11559" ConfigName="Debug"/>
+      <Project Name="UVa-11799" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="UVa-11559" ConfigName="Release"/>
+      <Project Name="UVa-11799" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>
