@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <cstdio>
+#include <algorithm>
+#include <vector>
 
 int isSpace(int c)
 {
@@ -42,10 +44,32 @@ typedef struct __Problem {
 } Problem;
 
 typedef struct __Team {
+	int teamId = 0;
 	int numProb = 0;
 	int totalPenaltyTime = 0;
+	bool isParticipant = false;
 	Problem probs[10];
 } Team;
+
+bool isGreater(Team leftTeam, Team rightTeam)
+{
+	if (leftTeam.numProb > rightTeam.numProb)
+		return true;
+
+	if (leftTeam.numProb == rightTeam.numProb)
+	{
+		if (leftTeam.totalPenaltyTime < rightTeam.totalPenaltyTime)
+			return true;
+
+		if (leftTeam.totalPenaltyTime == rightTeam.totalPenaltyTime)
+		{
+			if (leftTeam.teamId < rightTeam.teamId)
+				return true;
+		}
+	}
+
+	return false;
+}
 
 int main()
 {
@@ -55,15 +79,20 @@ int main()
 	{
 		int contestant, problem, time;
 		char L;
-		Team teams[101];
-		
+
+		std::vector<Team> teams;
+		for (int i = 0; i < 101; i++)
+		{
+			Team tmpTeam;
+			tmpTeam.teamId = i;
+			teams.push_back(tmpTeam);
+		}
+
 		char line[64];
 		while ((fgets(line, sizeof line, stdin) != NULL) && (isEmpty(line) == 0))
 		{
 			if (sscanf(line, "%d %d %d %c", &contestant, &problem, &time, &L) == 4)
 			{
-				//printf("%d %d %d %c\n", contestant, problem, time, L);
-				// Format Input
 				if (!teams[contestant].probs[problem].isSolved && (L == 'C' || L == 'I'))
 				{
 					if (teams[contestant].probs[problem].prevSub == '\0' && L == 'C')
@@ -87,6 +116,10 @@ int main()
 					
 
 					teams[contestant].probs[problem].prevSub = L;
+					teams[contestant].isParticipant = true;
+				}
+				else {
+					teams[contestant].isParticipant = true;
 				}
 				// End Format Input
 			}
@@ -105,10 +138,22 @@ int main()
 			}
 		}
 
-		for (int theTeam = 100; theTeam > 0; theTeam--)
+		std::sort(teams.begin(), teams.end(), isGreater);
+
+		for (int theTeam = 0; theTeam < 101; theTeam++)
 		{
-			if (teams[theTeam].numProb)
-				printf("%d %d %d\n", theTeam, teams[theTeam].numProb, teams[theTeam].totalPenaltyTime);
+			if (teams[theTeam].isParticipant)
+			{
+				if (teams[theTeam].numProb)
+				{
+					printf("%d %d %d\n", teams[theTeam].teamId, teams[theTeam].numProb, teams[theTeam].totalPenaltyTime);
+
+				}
+				else
+				{
+					printf("%d %d %d\n", teams[theTeam].teamId, 0, 0);
+				}
+			}
 		}
 
 		if(T) printf("\n"); // Extra new line after each case except last case
