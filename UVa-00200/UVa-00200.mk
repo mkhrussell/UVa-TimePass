@@ -3,10 +3,10 @@
 ## any manual changes will be erased      
 ##
 ## Debug
-ProjectName            :=UVa-10141
+ProjectName            :=UVa-00200
 ConfigurationName      :=Debug
 WorkspacePath          := "/home/kamrul/Development/UVa-TimePass"
-ProjectPath            := "/home/kamrul/Development/UVa-TimePass/UVa-10141"
+ProjectPath            := "/home/kamrul/Development/UVa-TimePass/UVa-00200"
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
@@ -32,7 +32,7 @@ Preprocessors          :=
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E
-ObjectsFileList        :="UVa-10141.txt"
+ObjectsFileList        :="UVa-00200.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
 LinkOptions            :=  
@@ -60,7 +60,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/UVa10141.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/UVa00200.cpp$(ObjectSuffix) 
 
 
 
@@ -91,13 +91,13 @@ PreBuild:
 ##
 ## Objects
 ##
-$(IntermediateDirectory)/UVa10141.cpp$(ObjectSuffix): UVa10141.cpp $(IntermediateDirectory)/UVa10141.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/kamrul/Development/UVa-TimePass/UVa-10141/UVa10141.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/UVa10141.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/UVa10141.cpp$(DependSuffix): UVa10141.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/UVa10141.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/UVa10141.cpp$(DependSuffix) -MM "UVa10141.cpp"
+$(IntermediateDirectory)/UVa00200.cpp$(ObjectSuffix): UVa00200.cpp $(IntermediateDirectory)/UVa00200.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/kamrul/Development/UVa-TimePass/UVa-00200/UVa00200.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/UVa00200.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/UVa00200.cpp$(DependSuffix): UVa00200.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/UVa00200.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/UVa00200.cpp$(DependSuffix) -MM "UVa00200.cpp"
 
-$(IntermediateDirectory)/UVa10141.cpp$(PreprocessSuffix): UVa10141.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/UVa10141.cpp$(PreprocessSuffix) "UVa10141.cpp"
+$(IntermediateDirectory)/UVa00200.cpp$(PreprocessSuffix): UVa00200.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/UVa00200.cpp$(PreprocessSuffix) "UVa00200.cpp"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

@@ -8,6 +8,7 @@ int _col_size;
 
 char _result[30];
 int _result_cursor = 0;
+
 void addToResult(char searchKey)
 {
     bool keyFound = false;
@@ -37,13 +38,9 @@ int main(int argc, char **argv)
             break;
         }
 
-        //printf("%s", _dict[_dict_size]);
-
         _col_size = strlen(_dict[_dict_size]) > _col_size ? strlen(_dict[_dict_size]) : _col_size;
         ++_dict_size;
     }
-
-    //printf("\n\n");
 
     for(int col = 0; col < _col_size; col++)
     {
@@ -51,11 +48,9 @@ int main(int argc, char **argv)
         {
             if(_dict[row][col] >= 'A' && _dict[row][col] <= 'Z')
             {
-                //printf("%c", _dict[row][col]);
                 addToResult(_dict[row][col]);
             }
         }
-        //printf("\n");
     }
 
     printf("%s\n", _result);
